@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bianca Githa Saraswati | Performance Marketing & UX Portfolio</title>
+  <style>
+    :root {
+      --forest: #183326;
+      --forest-2: #244834;
+      --moss: #6e8564;
+      --sage: #dfe9d8;
+      --cream: #f8f4e9;
+      --paper: rgba(255, 253, 244, 0.78);
+      --wood: #a37d54;
+      --text: #142119;
+      --muted: #667266;
+      --line: rgba(36, 72, 52, 0.12);
+      --shadow: 0 24px 70px rgba(24, 51, 38, 0.13);
+      --soft-shadow: 0 12px 34px rgba(24, 51, 38, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      cursor: default;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(110,133,100,.22), transparent 26%),
+        radial-gradient(circle at 85% 12%, rgba(163,125,84,.14), transparent 26%),
+        radial-gradient(circle at 50% 90%, rgba(36,72,52,.10), transparent 28%),
+        linear-gradient(135deg, #f8f4e9 0%, #f1ecdf 48%, #fbf8ef 100%);
+      background-attachment: fixed;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(24,51,38,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(24,51,38,.045) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: auto; }
+
+    .navbar {
+      position: sticky;
+      top: 18px;
+      z-index: 100;
+      width: min(1120px, 92%);
+      margin: 18px auto 0;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 999px;
+      background: rgba(255,253,244,.78);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 18px 50px rgba(24,51,38,.10);
+      border: 1px solid rgba(255,255,255,.48);
+    }
+
+    .logo {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      color: var(--forest-2);
+      letter-spacing: -.03em;
+      font-size: 15px;
+    }
+
+    .nav-links { display: flex; gap: 4px; font-size: 14px; font-weight: 800; color: #516151; }
+    .nav-links a { padding: 10px 13px; border-radius: 999px; transition: .2s ease; }
+    .nav-links a:hover { color: var(--forest); background: rgba(223,233,216,.70); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 64px 0 48px;
+      min-height: calc(100vh - 110px);
+      display: flex;
+      align-items: center;
+    }
+
+    .leaf-mark { position: absolute; color: rgba(36,72,52,.10); line-height: 1; pointer-events: none; user-select: none; }
+    .leaf-one { top: 120px; right: 6%; font-size: 120px; transform: rotate(-18deg); }
+    .leaf-two { bottom: 35px; left: 4%; font-size: 86px; transform: rotate(24deg); }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .98fr) minmax(360px, .82fr);
+      gap: 42px;
+      align-items: center;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(255,253,244,.78);
+      color: var(--forest-2);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      box-shadow: var(--soft-shadow);
+      letter-spacing: -.01em;
+    }
+
+    h1 {
+      max-width: 690px;
+      font-size: clamp(48px, 6.4vw, 84px);
+      line-height: .94;
+      letter-spacing: -.078em;
+      color: #102018;
+      margin-bottom: 22px;
+    }
+
+    .hero p { max-width: 650px; font-size: 18px; color: #526154; margin-bottom: 28px; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 46px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 900;
+      transition: .22s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-dark { background: var(--forest); color: #fffdf4; box-shadow: 0 16px 30px rgba(24,51,38,.24); }
+    .btn-light { background: rgba(255,253,244,.82); color: var(--forest); box-shadow: var(--soft-shadow); }
+
+    .hero-card {
+      position: relative;
+      border-radius: 38px;
+      padding: 18px;
+      background:
+        linear-gradient(135deg, rgba(255,253,244,.84), rgba(223,233,216,.58));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -90px;
+      top: -80px;
+      border-radius: 999px;
+      background: rgba(36,72,52,.12);
+    }
+
+    .hero-card-inner {
+      position: relative;
+      border-radius: 30px;
+      padding: 26px;
+      background: linear-gradient(145deg, rgba(255,253,244,.74), rgba(223,233,216,.48));
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.38);
+    }
+
+    .hero-photo-wrap { display: flex; justify-content: center; margin-bottom: 18px; }
+    .hero-photo-frame {
+      width: 170px;
+      height: 170px;
+      padding: 8px;
+      border-radius: 42px;
+      background: rgba(255,253,244,.74);
+      box-shadow: 0 24px 60px rgba(24,51,38,.18);
+      transform: rotate(-3deg);
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 34px;
+      filter: contrast(1.03) saturate(1.04);
+    }
+
+    .hero-card small { color: var(--forest-2); font-weight: 900; }
+    .hero-card h2 { margin-top: 6px; font-size: 28px; line-height: 1.08; letter-spacing: -.045em; }
+    .snapshot-list { display: grid; gap: 10px; margin-top: 20px; }
+    .snapshot-item { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 15px; border-radius: 18px; background: rgba(255,253,244,.76); font-weight: 900; color: #2d4032; }
+    .snapshot-item span { color: var(--forest-2); background: var(--sage); padding: 5px 10px; border-radius: 999px; font-size: 12px; }
+
+    section { padding: 52px 0; }
+    .section-heading { max-width: 780px; margin: 0 auto 34px; text-align: center; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .22em; font-size: 12px; font-weight: 900; color: var(--moss); margin-bottom: 8px; }
+    .section-heading h2 { font-size: clamp(30px, 4vw, 44px); line-height: 1.05; color: #132018; letter-spacing: -.05em; margin-bottom: 13px; }
+    .section-heading p { color: var(--muted); font-size: 16px; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+
+    .card {
+      position: relative;
+      background: var(--paper);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 24px;
+      box-shadow: var(--soft-shadow);
+      transition: .25s ease;
+      overflow: hidden;
+    }
+    .card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.34), transparent 45%); pointer-events: none; }
+    .card > * { position: relative; z-index: 1; }
+    .card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 24px 48px rgba(24,51,38,.13); border-color: rgba(36,72,52,.22); }
+    .card h3 { color: #132018; margin-bottom: 10px; line-height: 1.18; letter-spacing: -.035em; }
+    .card p, .card li, .card span { color: var(--muted); font-size: 14px; }
+    .card ul { padding-left: 18px; margin-top: 12px; }
+    .card li { margin-bottom: 8px; }
+
+    .metric-card strong { display: block; font-size: 25px; color: var(--forest-2); margin-bottom: 4px; letter-spacing: -.035em; }
+    .metric-card span { font-weight: 700; }
+    .icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 18px; background: var(--sage); font-size: 24px; margin-bottom: 18px; }
+
+    .about-box { display: grid; grid-template-columns: 1.18fr .82fr; gap: 18px; align-items: stretch; }
+    .about-main { background: var(--forest); color: #fffdf4; border-radius: 34px; padding: 32px; box-shadow: 0 28px 60px rgba(24,51,38,.18); position: relative; overflow: hidden; }
+    .about-main::after { content: ""; position: absolute; width: 210px; height: 210px; right: -86px; bottom: -90px; border-radius: 999px; background: rgba(223,233,216,.12); }
+    .about-main h2 { font-size: 36px; letter-spacing: -.05em; line-height: 1.08; margin-bottom: 15px; }
+    .about-main p { color: #e9eadb; margin-bottom: 13px; position: relative; z-index: 1; }
+    .about-side { display: grid; gap: 14px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .tag { padding: 7px 10px; border-radius: 999px; background: var(--sage); color: var(--forest-2) !important; border: 1px solid rgba(47,81,58,.10); font-size: 12px !important; font-weight: 900; }
+    .project-type, .case-type { color: var(--moss); font-size: 13px; font-weight: 900; margin-bottom: 8px; }
+    .featured { grid-column: span 2; }
+
+    .case-flow { display: grid; gap: 10px; margin-top: 18px; }
+    .flow-item { padding: 14px 16px; border-radius: 18px; background: rgba(226,234,219,.58); border: 1px solid rgba(47,81,58,.08); }
+    .flow-item strong { display: block; color: var(--forest); margin-bottom: 4px; font-size: 13px; }
+
+    .mockup { margin-top: 18px; border-radius: 22px; padding: 18px; background: linear-gradient(135deg, rgba(49,85,62,.12), rgba(155,122,84,.10)); }
+    .mockup-screen { min-height: 126px; border-radius: 18px; background: rgba(255,253,244,.86); padding: 16px; display: grid; gap: 10px; align-content: center; }
+    .mockup-bar { width: 60%; height: 12px; border-radius: 999px; background: var(--sage); }
+    .mockup-bar.short { width: 36%; }
+    .mockup-button { width: fit-content; padding: 9px 14px; border-radius: 999px; background: var(--forest); color: #fffdf4; font-size: 12px; font-weight: 900; }
+
+    .timeline { max-width: 940px; margin: auto; display: grid; gap: 14px; }
+    .timeline-card { display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: start; }
+    .timeline-date { font-weight: 900; color: var(--forest-2); background: var(--sage); border-radius: 999px; padding: 8px 12px; text-align: center; font-size: 13px; }
+
+    .experience-list { max-width: 920px; margin: auto; display: grid; gap: 16px; }
+    .experience-header { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+    .experience-company { color: var(--moss); font-weight: 900; font-size: 14px; }
+    .period { height: fit-content; padding: 7px 12px; border-radius: 999px; background: var(--sage); color: var(--forest-2); font-size: 12px; font-weight: 900; white-space: nowrap; }
+
+    .summary-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 18px; }
+    .summary-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(223,233,216,.18), transparent 28%),
+        linear-gradient(135deg, #183326 0%, #214532 55%, #13281d 100%);
+      color: white;
+      box-shadow: 0 28px 70px rgba(24,51,38,.18);
+    }
+    .summary-card::after { content: "❧"; position: absolute; right: 28px; bottom: -18px; font-size: 120px; color: rgba(255,253,244,.08); transform: rotate(-12deg); }
+    .summary-card h2 { font-size: 38px; margin-bottom: 14px; letter-spacing: -.055em; line-height: 1.04; }
+    .summary-card p { color: #e9eadb; max-width: 760px; font-size: 15px; }
+    .spotlight-label { display: inline-flex; width: fit-content; margin-bottom: 14px; padding: 7px 11px; border-radius: 999px; background: rgba(255,253,244,.12); color: #edf4e6; font-size: 12px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .spotlight-points { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; position: relative; z-index: 1; }
+    .spotlight-points span { padding: 8px 11px; border-radius: 999px; background: rgba(255,253,244,.12); color: #f8f4e9; font-size: 12px; font-weight: 900; }
+
+    .contact-card { max-width: 860px; margin: auto; text-align: center; padding: 42px; border-radius: 40px; background: radial-gradient(circle at top left, rgba(36,72,52,.10), transparent 32%), linear-gradient(135deg, rgba(226,234,219,.94), rgba(255,253,244,.88), rgba(239,229,211,.78)); box-shadow: var(--shadow); }
+    .contact-card h2 { font-size: 42px; color: #132018; letter-spacing: -.055em; margin-bottom: 12px; }
+    .contact-card p { color: var(--muted); max-width: 650px; margin: 0 auto 24px; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .contact-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 999px; background: rgba(255,253,244,.82); font-weight: 900; color: #45564b; font-size: 14px; box-shadow: 0 10px 22px rgba(24,51,38,.07); }
+    footer { padding: 28px; text-align: center; color: #7c897e; font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .hero { min-height: auto; }
+      .hero-grid, .about-box, .summary-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+      .featured { grid-column: span 1; }
+      .timeline-card { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 56px; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -.055em; font-size: clamp(42px, 14vw, 64px); }
+      .experience-header { flex-direction: column; }
+      .contact-card, .about-main { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#home" class="logo">✦ Bianca Githa Saraswati</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#ux-research">UX</a>
+      <a href="#case-studies">Projects</a>
+      <a href="#marketing-work">Marketing</a>
+      <a href="#learning">Learning</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="leaf-mark leaf-one">❧</div>
+    <div class="leaf-mark leaf-two">⌘</div>
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">🌿 Performance Marketing with UX Perspective</div>
+        <h1>Understanding people behind the clicks.</h1>
+        <p>
+          Hi, I’m Bianca Githa Saraswati — a digital marketing specialist with a Computer Science and UI/UX foundation. I blend Google Ads, SEO, UX research, UX writing, and campaign reporting to create clearer journeys and stronger digital performance.
+        </p>
+        <div class="hero-buttons">
+          <a href="#case-studies" class="btn btn-dark">View Projects →</a>
+          <a href="#marketing-work" class="btn btn-light">Marketing Experience</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hero-photo-wrap">
+            <div class="hero-photo-frame">
+              <img src="profile.png" alt="Bianca Githa Saraswati portrait" class="hero-photo">
+            </div>
+          </div>
+          <small>Portfolio Focus</small>
+          <h2>Marketing execution with user-centered thinking</h2>
+          <div class="snapshot-list">
+            <div class="snapshot-item">UX research & usability thinking <span>01</span></div>
+            <div class="snapshot-item">Google Ads campaign execution <span>02</span></div>
+            <div class="snapshot-item">SEO, AEO & search intent <span>03</span></div>
+            <div class="snapshot-item">UX writing & conversion copy <span>04</span></div>
+            <div class="snapshot-item">Reporting & campaign evaluation <span>05</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container grid-4">
+      <div class="card metric-card"><strong>2021–2024</strong><span>UI/UX foundation during Computer Science</span></div>
+      <div class="card metric-card"><strong>2024–2026</strong><span>Performance marketing, SEO & campaign work</span></div>
+      <div class="card metric-card"><strong>1st Place</strong><span>UX Research final project in MBKM UI/UX program</span></div>
+      <div class="card metric-card"><strong>Hybrid</strong><span>Marketing execution + UX research perspective</span></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-box">
+      <div class="about-main">
+        <h2>I connect user understanding with marketing execution.</h2>
+        <p>
+          My strength is bridging UX Research, UX Writing, SEO, and Performance Marketing. I like understanding why users hesitate, what makes copy confusing, what information they need before taking action, and how digital journeys can feel more natural.
+        </p>
+        <p>
+          Then I translate those findings into clearer copy, stronger campaign structure, better landing page relevance, more useful reports, and marketing decisions that feel more intentional.
+        </p>
+      </div>
+      <div class="about-side">
+        <div class="card"><h3>What I care about</h3><p>Clear choices, helpful copy, smoother journeys, stronger search intent, and marketing that feels useful instead of pushy.</p></div>
+        <div class="card"><h3>How I work</h3><p>Problem → Research → Insight → Solution → Result. I like turning messy feedback, campaign data, or search behavior into practical next steps.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ux-research">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">UX Research & UX Writing</div>
+        <h2>Research first, copy second</h2>
+        <p>I look at user behavior, task flow, hesitation points, search intent, and context before recommending clearer copy or journey improvements.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="icon">🧭</div><h3>User Journey Review</h3><p>Map user steps, identify confusing moments, and review whether the flow gives enough context for users to continue confidently.</p></div>
+        <div class="card"><div class="icon">🔍</div><h3>Heuristic Evaluation</h3><p>Review interface clarity, consistency, error prevention, language, CTA placement, and friction points using usability principles.</p></div>
+        <div class="card"><div class="icon">💬</div><h3>Microcopy Improvement</h3><p>Rewrite CTAs, labels, onboarding text, and error states so the interface feels more specific, helpful, and human.</p></div>
+        <div class="card"><div class="icon">🧠</div><h3>User Behavior Thinking</h3><p>Connect UX insights with what users search, compare, hesitate on, and need before converting.</p></div>
+        <div class="card"><div class="icon">📝</div><h3>UX Writing for Marketing</h3><p>Shape headlines, descriptions, H1s, and CTA wording so campaign messages are clearer and easier to act on.</p></div>
+        <div class="card"><div class="icon">📌</div><h3>Information Clarity</h3><p>Organize page messages, report notes, and client-facing explanations into clear, scannable communication.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="case-studies">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Selected Projects</div>
+        <h2>UX research, usability, and performance marketing projects</h2>
+        <p>Relevant projects are highlighted here. Full documentation is linked to Notion, while sensitive data stays private.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card featured">
+          <div class="case-type">UX Research / Usability Testing</div>
+          <h3>Visit Indonesia Mobile App — Research Plan & Usability Test</h3>
+          <p>Planned and reviewed usability testing for a tourism mobile app, focusing on how users understand travel flows, onboarding information, and task clarity.</p>
+          <div class="case-flow">
+            <div class="flow-item"><strong>Focus</strong><span>Research planning, usability testing flow, user task clarity, and tourism user experience.</span></div>
+            <div class="flow-item"><strong>UX Value</strong><span>Shows ability to think beyond visuals by preparing research structure and evaluating how users complete tasks.</span></div>
+          </div>
+          <div class="mockup"><div class="mockup-screen"><div class="mockup-bar"></div><div class="mockup-bar short"></div><div class="mockup-button">Plan Your Trip</div></div></div>
+          <a class="btn btn-light" href="https://parallel-cruiser-063.notion.site/Research-Plan-and-UT-for-Visit-Indonesia-Mobile-by-Wonderful-Indonesia-3ab26eb99b7748a7ab6a7e8883808938" target="_blank" style="margin-top:16px;">Read full case study →</a>
+        </div>
+
+        <div class="card">
+          <div class="case-type">UX Research / Heuristic Evaluation</div>
+          <h3>Eventeer.id — Heuristic Evaluation</h3>
+          <p>Evaluated a ticket-booking experience by reviewing usability issues, CTA consistency, friction points, and how users move through the booking journey.</p>
+          <div class="tags"><span class="tag">Heuristic Evaluation</span><span class="tag">Booking Flow</span><span class="tag">CTA Consistency</span></div>
+          <a class="btn btn-light" href="https://parallel-cruiser-063.notion.site/Heuristic-Evaluation-for-Eventeer-id-382521ed2dc24abe94d84b189ba82e81" target="_blank" style="margin-top:16px;">Read full case study →</a>
+        </div>
+
+        <div class="card">
+          <div class="case-type">UX Research / Usability Testing</div>
+          <h3>Netflix — Usability Testing</h3>
+          <p>Reviewed Netflix-related usability through testing and evaluation, focusing on user confidence, task completion, learnability, and confusing moments.</p>
+          <div class="tags"><span class="tag">Usability Testing</span><span class="tag">Learnability</span><span class="tag">Task Flow</span></div>
+          <a class="btn btn-light" href="https://parallel-cruiser-063.notion.site/Usability-Testing-for-Netflix-56d774a2d93a443fa556b46d48f44a28" target="_blank" style="margin-top:16px;">Read full case study →</a>
+        </div>
+
+        <div class="card">
+          <div class="case-type">UX Evaluation / Research Method</div>
+          <h3>Learnability & Usability Evaluation Questionnaire</h3>
+          <p>Worked on usability evaluation using questionnaire-based assessment, including learnability and reliability-oriented thinking through split-half evaluation.</p>
+          <div class="tags"><span class="tag">Questionnaire</span><span class="tag">Learnability</span><span class="tag">Research Method</span></div>
+          <a class="btn btn-light" href="https://parallel-cruiser-063.notion.site/Learnability-Usability-Evaluation-Questioner-with-Split-Half-bb424a458fce4fbf8c50a498de35b34d" target="_blank" style="margin-top:16px;">Read full case study →</a>
+        </div>
+
+        <div class="card">
+          <div class="case-type">UX Evaluation / Social Platform</div>
+          <h3>Twitter/X — Subjective Usability Testing</h3>
+          <p>Evaluated subjective usability on a social platform experience, looking at user perception, ease of use, and how interface behavior affects confidence.</p>
+          <div class="tags"><span class="tag">Subjective Usability</span><span class="tag">User Perception</span><span class="tag">Social Platform</span></div>
+          <a class="btn btn-light" href="https://parallel-cruiser-063.notion.site/Usability-Testing-Subjective-On-Twitter-X-4933edc9b2f142038fee189efc786cfb" target="_blank" style="margin-top:16px;">Read full case study →</a>
+        </div>
+
+        <div class="card">
+          <div class="case-type">UX Portfolio / Case Study Collection</div>
+          <h3>Bianca’s UX Case Study Collection</h3>
+          <p>A broader UX case study collection showing how I approach research, evaluation, interface problems, and user-centered recommendations.</p>
+          <div class="tags"><span class="tag">UX Research</span><span class="tag">Case Study</span><span class="tag">Usability</span></div>
+          <a class="btn btn-light" href="https://parallel-cruiser-063.notion.site/Bianca-s-UX-Case-Study-264bd9b7143e80f18693da328d3686fb" target="_blank" style="margin-top:16px;">Open collection →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="marketing-work">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Performance Marketing Work</div>
+        <h2>Google Ads, SEO, campaign execution, and reporting</h2>
+        <p>Based on real work patterns from 2024–2026, written safely without exposing account data, budgets, credentials, or confidential campaign details.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card featured">
+          <div class="project-type">Google Ads / E-commerce</div>
+          <h3>Singapore Kids Beds Company — Google Ads Optimization</h3>
+          <p>Supported campaign improvements for a children’s furniture brand, including campaign structure, keyword relevance, ad copy, product-focused messaging, SEO intent, and performance review.</p>
+          <div class="tags"><span class="tag">Google Ads</span><span class="tag">E-commerce</span><span class="tag">Kids Furniture</span><span class="tag">SEO Intent</span></div>
+          <a class="btn btn-light" href="https://parallel-cruiser-063.notion.site/Singapore-Kids-Beds-Company-Google-Ads-Optimization-264bd9b7143e80d99a1bcca67b7bad7d" target="_blank" style="margin-top:16px;">Read full project →</a>
+        </div>
+
+        <div class="card">
+          <div class="project-type">Google Ads / Jewelry E-commerce</div>
+          <h3>Jewelry Shop — Ring Campaign Growth</h3>
+          <p>Worked on jewelry campaign growth support, including product-focused campaign assets, keyword research, campaign setup, and collection-based messaging.</p>
+          <div class="tags"><span class="tag">PMax</span><span class="tag">Shopping</span><span class="tag">Jewelry</span><span class="tag">Product Ads</span></div>
+          <a class="btn btn-light" href="http://parallel-cruiser-063.notion.site/Jewelry-Shop-Ring-Campaign-Growth-264bd9b7143e800e81e3f82cc3e2e3cd" target="_blank" style="margin-top:16px;">Read full project →</a>
+        </div>
+
+        <div class="card">
+          <div class="project-type">Event Campaign / Nightlife</div>
+          <h3>Nightclub in Seminyak — Event Campaign</h3>
+          <p>Supported event campaign assets and setup for nightlife marketing, including high-conversion headlines, event messaging, audience intent, and campaign execution.</p>
+          <div class="tags"><span class="tag">Event Ads</span><span class="tag">PMax</span><span class="tag">Display</span><span class="tag">Ad Copy</span></div>
+          <a class="btn btn-light" href="https://parallel-cruiser-063.notion.site/NightClub-in-Seminyak-Company-Event-Campaign-264bd9b7143e8015bf3bd9ec765fdefb" target="_blank" style="margin-top:16px;">Read full project →</a>
+        </div>
+
+        <div class="card"><div class="project-type">SEO Support</div><h3>SEO Checks & Content Optimization</h3><p>Supported keyword research, meta title updates, SEO reports, ranking checks, page experience learning, and content recommendations based on search intent.</p><div class="tags"><span class="tag">SEO</span><span class="tag">Search Intent</span><span class="tag">Meta Title</span><span class="tag">GSC</span><span class="tag">Rank Tracking</span></div></div>
+        <div class="card"><div class="project-type">Reporting & Evaluation</div><h3>Monthly Performance Reports</h3><p>Created recurring reports and revision notes by reviewing campaign movement, conversion activity, billing checks, campaign status, and optimization opportunities.</p><div class="tags"><span class="tag">Monthly Report</span><span class="tag">Campaign Evaluation</span><span class="tag">Client Updates</span></div></div>
+        <div class="card"><div class="project-type">Issue Handling</div><h3>Monitoring & Troubleshooting</h3><p>Monitored daily campaign conditions, checked billing and conversion-related issues, prepared support notes, and documented campaign issues for internal review.</p><div class="tags"><span class="tag">Daily Check</span><span class="tag">Troubleshooting</span><span class="tag">Issue Notes</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="industries">
+    <div class="container">
+      <div class="section-heading"><div class="eyebrow">Industry Exposure</div><h2>Multi-industry campaign experience</h2><p>I have supported marketing tasks across different business types, which helped me learn how user intent changes by context.</p></div>
+      <div class="grid-4">
+        <div class="card"><div class="icon">🏨</div><h3>Hospitality & Lifestyle</h3><p>Event, nightlife, restaurant, villa, wellness, and local experience campaigns.</p></div>
+        <div class="card"><div class="icon">🛍️</div><h3>E-commerce</h3><p>Shopping, product feed, PMAX, product keyword, and seasonal campaign support.</p></div>
+        <div class="card"><div class="icon">🌊</div><h3>Travel & Activities</h3><p>Tour, snorkeling, surf school, tourism landing page and search campaign support.</p></div>
+        <div class="card"><div class="icon">🎓</div><h3>Education & Services</h3><p>Education consultation, cyber security, wellness, and service-based campaign structure support.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="learning">
+    <div class="container">
+      <div class="section-heading"><div class="eyebrow">Learning Path</div><h2>Continuous learning from 2021–2026</h2><p>Relevant learning only: UX, Google Ads, SEO, AI Search, copywriting, premium branding, e-commerce strategy, and user-centered marketing.</p></div>
+      <div class="timeline">
+        <div class="card timeline-card"><div class="timeline-date">2021–2023</div><div><h3>UI/UX foundation during Computer Science study</h3><p>Started learning UI/UX while studying Computer Science, including user journey, usability, interface evaluation, research planning, questionnaires, and case study thinking.</p></div></div>
+        <div class="card timeline-card"><div class="timeline-date">2024</div><div><h3>SEO, Google Ads & campaign execution</h3><p>Studied SEO essentials, Google Shopping, campaign structure, negative keywords, landing page experience, Quality Score, Core Web Vitals, and Google Search Console basics while supporting real campaign tasks.</p></div></div>
+        <div class="card timeline-card"><div class="timeline-date">2025</div><div><h3>Google Ads, Meta, AEO & campaign strategy</h3><p>Completed learning on Google Ads strategy, small-budget campaigns, AI Max updates, Demand Gen mistakes, Shopping optimization, writing ads that convert, and AEO/AI search visibility.</p></div></div>
+        <div class="card timeline-card"><div class="timeline-date">2026</div><div><h3>AI search, e-commerce, copywriting & brand psychology</h3><p>Continued with e-commerce Google Ads, Google vs Facebook Ads, AI search domination, SEO & AI SEO courses, ad hooks and angles, copywriting, premium branding, and AI productivity.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-heading"><div class="eyebrow">Experience</div><h2>Recent work experience</h2><p>A clear summary of what I have been doing professionally.</p></div>
+      <div class="experience-list">
+        <div class="card">
+          <div class="experience-header"><div><h3>Digital Marketing / Google Ads Support</h3><div class="experience-company">Performance Marketing, SEO & Google Ads • Bali</div></div><div class="period">2024–Present</div></div>
+          <ul><li>Supported Google Ads campaign execution across Search, Performance Max, Display, Shopping, and Demand Gen campaigns.</li><li>Worked on SEO support including keyword intent review, meta title optimization, content direction, landing page relevance, and ranking evaluation.</li><li>Prepared campaign assets, ad copy, keyword research, negative keyword reviews, Shopping/product-focused structure, and campaign setup notes.</li><li>Created monthly reports, campaign summaries, billing checks, performance observations, SEO notes, and issue documentation.</li><li>Worked across hospitality, nightlife, e-commerce, jewelry, furniture, wellness, education, tourism, and service-based businesses.</li><li>Used AI tools to support ideation, writing, reporting structure, workflow organization, and faster campaign operations.</li></ul>
+        </div>
+        <div class="card">
+          <div class="experience-header"><div><h3>Computer Science Graduate with UI/UX Foundation</h3><div class="experience-company">Universitas Udayana</div></div><div class="period">2021–2024</div></div>
+          <ul><li>Built a strong foundation in UX Research, usability evaluation, interface thinking, and user-centered problem solving.</li><li>Focused on understanding user behavior, pain points, task flow clarity, and how digital experiences affect decisions and engagement.</li><li>Awarded 1st Place in a UX Research final project through Universitas Udayana’s MBKM UI/UX program.</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container summary-grid">
+      <div class="summary-card spotlight-card"><span class="spotlight-label">Professional Snapshot</span><h2>UX-minded marketer with research roots.</h2><p>Computer Science graduate with a strong foundation in UX Research, usability evaluation, SEO, and performance marketing. I connect user behavior, search intent, campaign execution, and clear communication to create digital experiences that are easier to understand and stronger in performance.</p><div class="spotlight-points"><span>UX Research Award Winner</span><span>Google Ads & SEO Support</span><span>AI-Assisted Workflow</span></div></div>
+      <div class="card"><h3>🎓 Education</h3><p>Computer Science graduate from Universitas Udayana, Bali, with a strong interest in UX research, UX writing, user behavior, SEO, AI search, and digital marketing.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container"><div class="card"><h3>Confidentiality Note</h3><p>Portfolio examples are intentionally summarized at a high level. I do not share private client data, account access, budgets, internal documents, credentials, or confidential campaign performance details.</p></div></div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <h2>Let’s work together</h2>
+        <p>Open to performance marketing, campaign, digital marketing, SEO, UX research, UX writing, and growth-related roles where I can combine user intent, clear copy, campaign execution, and detail-oriented reporting.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:biancasaraswati@gmail.com">✉️ biancasaraswati@gmail.com</a>
+          <a class="contact-link" href="tel:08113985060">📞 08113985060</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/biancasaraswati" target="_blank">💼 linkedin.com/in/biancasaraswati</a>
+          <span class="contact-link">📍 Bali, Indonesia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Bianca Githa Saraswati. Portfolio built with HTML & CSS.</footer>
+</body>
+</html>
